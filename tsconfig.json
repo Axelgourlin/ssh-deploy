@@ -36,5 +36,8 @@
     {
       "path": "./tsconfig.node.json"
     }
+  ],
+  "exclude": [
+    "src/lib/bindings.ts"
   ]
 }

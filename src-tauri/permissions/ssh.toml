@@ -1,0 +1,4 @@
+[[permission]]
+identifier = "allow-copy-over-ssh"
+description = "Autorise l'exécution de la commande de copie SSH"
+commands.allow = ["copy_over_ssh"]

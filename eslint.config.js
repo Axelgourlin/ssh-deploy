@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 import react from 'eslint-plugin-react'
 
 export default tseslint.config(
-    { ignores: ['dist', '.eslintrc.cjs'] },
+    { ignores: ['dist', '.eslintrc.cjs', 'src/lib/bindings.ts'] },
     {
         extends: [
             js.configs.recommended,

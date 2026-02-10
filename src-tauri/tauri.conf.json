@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tauri-app",
+  "productName": "cc-auto-deploy",
   "version": "0.1.0",
-  "identifier": "com.axelg.tauri-app",
+  "identifier": "com.axelg.cc-auto-deploy",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "tauri-app",
+        "title": "cc-auto-deploy",
         "width": 800,
         "height": 600
       }
