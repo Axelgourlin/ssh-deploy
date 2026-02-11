@@ -1,7 +1,2 @@
-# Tauri + React + Typescript
+https://www.figma.com/make/gdAREuEo3lNpHWj0cLQjSd/Remote-File-Transfer-App?t=Lb52CGepBxXMk1BF-1
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
