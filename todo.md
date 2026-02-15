@@ -21,18 +21,28 @@
 
 > **As a user,** I want a form to define remote server information and test the SSH connection.
 
-- [ ] Select from a list of pre-registered hosts:
+- [x] Select from a list of pre-registered hosts:
   - `10.10.100.33`
   - `10.10.100.210`
   - `10.10.100.211`
   - `10.10.100.213`
   - `10.10.100.214`
-- [ ] Define remote server details (Host, Port, User) manually if needed.
-- [ ] Set SSH port (default to `22`).
-- [ ] Securely input SSH password.
-- [ ] Dedicated "Test Connection" functionality to verify credentials.
+- [x] Define remote server details (Host, Port, User) manually if needed.
+- [x] Set SSH port (default to `22`).
+- [x] Securely input SSH password.
 
-### 2. Server Management (CRUD)
+---
+
+### 2. Test SSH Connection
+
+> **As a user,** I want to test the SSH connection to ensure my credentials are correct before deployment.
+
+- [x] Dedicated "Test Connection" functionality to verify credentials.
+- [x] Display clear success or error messages based on the connection test results.
+
+---
+
+### 3. Server Management (CRUD)
 
 > **As a user,** I want to manage (Create, Read, Update, Delete) remote server profiles.
 
@@ -41,7 +51,9 @@
 - [ ] Edit/Update existing server information.
 - [ ] Remove/Delete server profiles.
 
-### 3. ZIP Deployment
+---
+
+### 4. ZIP Deployment
 
 > **As a user,** I want to copy a ZIP file to a remote server.
 
@@ -49,6 +61,8 @@
 - [ ] Perform file transfer using SSH/SFTP.
 - [ ] Deploy to a configurable or default path on the remote server.
 - [ ] Stream transfer progress and logs in real-time.
+
+---
 
 ### 5. Path Management
 
@@ -58,6 +72,8 @@
 - [ ] Save the destination path in profile.
 - [ ] Automatically create the destination path if it doesn't exist.
 - [ ] Recursively create any missing parent/child directories.
+
+---
 
 ### 6. "Latest Build" Intel
 
@@ -69,6 +85,8 @@
 - [ ] Real-time network status indicator (Icon/Badge).
 - [ ] Gracefully disable the option if the network is unavailable.
 
+---
+
 ### 7. Remote Extraction
 
 > **As a user,** I want to unzip the deployment file on the remote server.
@@ -78,6 +96,8 @@
 - [ ] Remove the ZIP file after extraction.
 - [ ] Create a new folder with the same name as the ZIP file (with timestamp) and move extracted contents there.
 - [ ] Follow the extraction process in real-time.
+
+---
 
 ### 8. Script Execution
 
@@ -92,6 +112,8 @@
 - [ ] Trigger script execution on the remote host.
 - [ ] Handle script execution errors gracefully and display them in real-time logs.
 - [ ] Support for commands requiring `sudo` (password handling).
+
+---
 
 ### 9. Monitoring & Notifications
 
