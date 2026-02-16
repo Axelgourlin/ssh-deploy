@@ -1,8 +1,19 @@
-// Plus besoin de définir l'interface à la main !
-import { SshPayload, commands } from "./bindings";
+import {
+  SshPayload,
+  TestSshConnectionPayload,
+  SshError,
+  Result,
+  commands,
+} from "./bindings";
 
-export const copyOverSSH = async (payload: SshPayload) => {
-    // Vous pouvez même utiliser l'objet 'commands' généré par specta
-    // qui est typé de bout en bout
-    await commands.copyOverSsh(payload);
-}
+export const copyOverSSH = async (
+  payload: SshPayload,
+): Promise<Result<string, string>> => {
+  return await commands.copyOverSsh(payload);
+};
+
+export const testSshConnection = async (
+  payload: TestSshConnectionPayload,
+): Promise<Result<string, SshError>> => {
+  return await commands.testSshConnection(payload);
+};

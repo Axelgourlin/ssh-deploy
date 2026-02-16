@@ -12,6 +12,14 @@ async copyOverSsh(payload: SshPayload) : Promise<Result<string, string>> {
     if(e instanceof Error) throw e;
     else return { status: "error", error: e  as any };
 }
+},
+async testSshConnection(payload: TestSshConnectionPayload) : Promise<Result<string, SshError>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("test_ssh_connection", { payload }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
 }
 }
 
@@ -25,7 +33,9 @@ async copyOverSsh(payload: SshPayload) : Promise<Result<string, string>> {
 
 /** user-defined types **/
 
+export type SshError = "AddressError" | "AuthenticationFailed" | { ProtocolError: string }
 export type SshPayload = { local_path: string; remote_path: string; host: string; user: string; password: string }
+export type TestSshConnectionPayload = { host: string; port: number; user: string; password: string }
 
 /** tauri-specta globals **/
 

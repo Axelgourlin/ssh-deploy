@@ -7,7 +7,7 @@ use tauri_specta::{collect_commands, Builder};
 pub fn run() {
     // Génération des types TypeScript
     let builder = Builder::<tauri::Wry>::new()
-        .commands(collect_commands![libs::ssh::copy_over_ssh,]);
+        .commands(collect_commands![libs::ssh::copy_ssh::copy_over_ssh, libs::ssh::test_ssh::test_ssh_connection]);
 
     #[cfg(debug_assertions)] // Optionnel : ne génère qu'en mode dev
     builder

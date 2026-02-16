@@ -2,6 +2,7 @@ use std::process::Command;
 use serde::Deserialize;
 use specta::Type;
 
+
 #[derive(Deserialize, Type)]
 pub struct SshPayload {
     pub local_path: String,
@@ -32,3 +33,5 @@ pub async fn copy_over_ssh(payload: SshPayload) -> Result<String, String> {
         Err(format!("Erreur curl : {}", error))
     }
 }
+
+

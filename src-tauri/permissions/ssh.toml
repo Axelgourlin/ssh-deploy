@@ -1,4 +1,4 @@
 [[permission]]
-identifier = "allow-copy-over-ssh"
-description = "Autorise l'exécution de la commande de copie SSH"
-commands.allow = ["copy_over_ssh"]
+identifier = "ssh-lib"
+description = "Many function to use SSH"
+commands.allow = ["copy_over_ssh", "test_ssh_connection"]
