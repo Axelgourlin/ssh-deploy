@@ -37,7 +37,7 @@ pub enum SshError {
 pub struct TestSshConnectionPayload {
     pub host: String,
     pub port: u16,
-    pub user: String,
+    pub username: String,
     pub password: String,
 }
 
@@ -65,7 +65,7 @@ pub async fn test_ssh_connection(
 
     // 3. Authentification avec mot de passe
     let auth_res = session
-        .authenticate_password(payload.user.clone(), payload.password.clone())
+        .authenticate_password(payload.username.clone(), payload.password.clone())
         .await
         .map_err(|e| SshError::ProtocolError(e.to_string()))?;
 

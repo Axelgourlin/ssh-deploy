@@ -19,13 +19,13 @@ export interface SSHConfigType {
   name: string;
   host: string;
   port: number;
-  user: string;
+  username: string;
   password?: string;
 }
 
 const preRegisteredConfigs: SSHConfigType[] = [
-  { name: "Super Syno", host: "10.10.100.214", port: 22, user: "mofa" },
-  { name: "Syno Test", host: "10.10.100.213", port: 22, user: "mofa" },
+  { name: "Super Syno", host: "10.10.100.214", port: 22, username: "mofa" },
+  { name: "Syno Test", host: "10.10.100.213", port: 22, username: "mofa" },
 ];
 
 export const SSHConfig = () => {
@@ -33,7 +33,7 @@ export const SSHConfig = () => {
     name: "",
     host: "",
     port: 22,
-    user: "",
+    username: "",
     password: undefined,
   });
 
@@ -118,9 +118,9 @@ export const SSHConfig = () => {
           <Field>
             <FieldLabel htmlFor="user">User</FieldLabel>
             <Input
-              id="user"
-              value={state.user}
-              onChange={(e) => handleChange("user", e.target.value)}
+              id="username"
+              value={state.username}
+              onChange={(e) => handleChange("username", e.target.value)}
               placeholder="username"
             />
           </Field>
@@ -140,7 +140,7 @@ export const SSHConfig = () => {
             <TestConnectionBtn
               host={state.host}
               port={state.port}
-              user={state.user}
+              username={state.username}
               password={state.password ?? ""}
             />
           </Field>
@@ -171,8 +171,8 @@ const sshConfigReducer = <T extends Partial<SSHConfigType>>(
       return { ...state, host: action.value ?? state.host };
     case "port":
       return { ...state, port: action.value ?? state.port };
-    case "user":
-      return { ...state, user: action.value ?? state.user };
+    case "username":
+      return { ...state, username: action.value ?? state.user };
     case "password":
       return { ...state, password: action.value ?? state.password };
     default:

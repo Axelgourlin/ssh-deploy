@@ -1,8 +1,8 @@
 [package]
-name = "tauri-app"
+name = "ssh_deploy"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A Tauri application for managing SSH configurations and deployments."
+authors = ["Axel G"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -25,10 +25,19 @@ serde_json = "1"
 specta = { version = "=2.0.0-rc.20", features = ["derive"] }
 specta-typescript = "0.0.7"
 tauri-specta = { version = "=2.0.0-rc.20", features = ["derive", "typescript"] }
+thiserror = "2.0"
+chrono = "0.4.43"
 
 # russh pour le SSH, tokio pour l'asynchrone
 russh = "0.40"
 russh-keys = "0.40"
 async-trait = "0.1"
 tokio = { version = "1.0", features = ["full"] }
+
+# databse orm
+sea-orm = { version = "2.0.0-rc", features = [ "sqlx-sqlite", "runtime-tokio", "macros" ] }
+validator = "0.20.0"
+
+[dev-dependencies]
+tokio-test = "0.4"
 

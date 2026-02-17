@@ -10,7 +10,7 @@ import { ProcessStatusIcon } from "../common/process-status-icon";
 export const TestConnectionBtn = ({
   host,
   port,
-  user,
+  username,
   password,
 }: TestSshConnectionPayload) => {
   const [testingIconStatus, setTestingIconStatus] = useState<
@@ -24,7 +24,7 @@ export const TestConnectionBtn = ({
       const result = await testSshConnection({
         host,
         port,
-        user,
+        username,
         password,
       });
       if (result.status === "ok") {
