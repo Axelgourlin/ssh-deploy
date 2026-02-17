@@ -4,11 +4,8 @@ import { TestSshConnectionPayload } from "@/lib/bindings";
 
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { CheckIcon } from "../icons/check";
-import { CancelIcon } from "../icons/cancel";
-import { Spinner } from "../ui/spinner";
-import { AccessPointIcon } from "../icons/access-point";
 import { testSshConnection } from "@/lib/sshApi";
+import { ProcessStatusIcon } from "../common/process-status-icon";
 
 export const TestConnectionBtn = ({
   host,
@@ -51,25 +48,8 @@ export const TestConnectionBtn = ({
       <p className="w-3/4"> Test Connection</p>
       <Separator orientation="vertical" />
       <div className="w-1/10">
-        <TestingIconHandler testingIconStatus={testingIconStatus} />
+        <ProcessStatusIcon testingIconStatus={testingIconStatus} />
       </div>
     </Button>
   );
-};
-
-const TestingIconHandler = ({
-  testingIconStatus,
-}: {
-  testingIconStatus: "idle" | "loading" | "success" | "error";
-}) => {
-  switch (testingIconStatus) {
-    case "loading":
-      return <Spinner />;
-    case "success":
-      return <CheckIcon className="text-green-500 animate-icon-pop" />;
-    case "error":
-      return <CancelIcon className="text-red-500 animate-icon-pop" />;
-    default:
-      return <AccessPointIcon />;
-  }
 };

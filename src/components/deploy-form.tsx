@@ -27,7 +27,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { SSHConfigContainer } from "./ssh-configuration/ssh-config-container";
+import { SSHConfig } from "./ssh-configuration/ssh-config";
 
 export function DeployForm() {
   // Optional options state
@@ -51,7 +51,7 @@ export function DeployForm() {
           <CardTitle>SSH Configuration</CardTitle>
           <CardDescription>Setup your remote server connection</CardDescription>
         </CardHeader>
-        <SSHConfigContainer />
+        <SSHConfig />
         <CardFooter className="flex justify-between">
           <AlertDialog>
             <AlertDialogTrigger asChild>
