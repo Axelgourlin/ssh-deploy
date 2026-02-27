@@ -35,7 +35,7 @@ async testSshConnection(payload: TestSshConnectionPayload) : Promise<Result<stri
 
 export type SshError = "AddressError" | "AuthenticationFailed" | { ProtocolError: string }
 export type SshPayload = { local_path: string; remote_path: string; host: string; user: string; password: string }
-export type TestSshConnectionPayload = { host: string; port: number; user: string; password: string }
+export type TestSshConnectionPayload = { host: string; port: number; username: string; password: string }
 
 /** tauri-specta globals **/
 

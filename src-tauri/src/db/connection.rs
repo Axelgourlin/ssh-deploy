@@ -1,5 +1,7 @@
-use sea_orm::{Database, DatabaseConnection, DbErr};
+use sea_orm::{Database, DatabaseConnection, DbErr, ConnectionTrait};
 use std::path::PathBuf;
+use tauri::Manager;
+
 
 pub struct DbConfig {
     pub path: PathBuf,
@@ -7,12 +9,18 @@ pub struct DbConfig {
 }
 
 impl DbConfig {
-    pub fn new(path: PathBuf) -> Self {
-        Self {
-            path,
-            memory: false,
+    pub fn from_app(app: &tauri::App) -> Self {
+            let path = app.path().app_data_dir()
+                .expect("Could not resolve app data dir")
+                .join("database.sqlite");
+            
+            // On s'assure que le dossier parent existe ici
+            if let Some(parent) = path.parent() {
+                std::fs::create_dir_all(parent).expect("Could not create db directory");
+            }
+
+            Self { path, memory: false }
         }
-    }
 
     pub fn memory() -> Self {
         Self {
@@ -32,10 +40,7 @@ pub async fn establish_connection(config: &DbConfig) -> Result<DatabaseConnectio
     let db = Database::connect(&database_url).await?;
     
     // Enable foreign keys for SQLite
-    sea_orm::Statement::from_string(
-        sea_orm::DatabaseBackend::Sqlite,
-        "PRAGMA foreign_keys = ON;".to_string(),
-    );
+    db.execute_unprepared("PRAGMA foreign_keys = ON;").await?;
     
     Ok(db)
 }

@@ -2,6 +2,8 @@ pub mod commands;
 pub mod db;
 pub mod error;
 
+use migration::{Migrator, MigratorTrait};
+
 use tauri::Manager;
 use specta_typescript::Typescript;
 use tauri_specta::{collect_commands, Builder};
@@ -39,14 +41,17 @@ pub fn run() {  // plus besoin de async
 
             std::fs::create_dir_all(&app_data_dir)?;
 
-            let db_path = app_data_dir.join("app.db");
+            let db_path = app_data_dir.join("database.sqlite");
+            let db_config = DbConfig::from_app(app);
+            println!("Database path: {:?}", db_path);
 
             // ✅ block_on pour exécuter de l'async dans le setup synchrone
             tauri::async_runtime::block_on(async {
-                let db_config = DbConfig::new(db_path);
                 let db = establish_connection(&db_config)
                     .await
                     .expect("Failed to connect to database");
+
+                Migrator::up(&db, None).await.unwrap();
 
                 let ssh_config_repo = Arc::new(SshConfigRepositoryImpl::new(db.clone()));
 
