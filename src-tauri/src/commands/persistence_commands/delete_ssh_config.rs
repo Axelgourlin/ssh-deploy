@@ -1,14 +1,15 @@
 use tauri::State;
-use crate::{AppState, db::entities::ssh_config};
+use crate::{AppState};
 
 
 #[tauri::command]
 #[specta::specta]
-pub async fn get_all_ssh_configs(
+pub async fn delete_ssh_config(
     state: State<'_, AppState>,
-) -> Result<Vec<ssh_config::Model>, String> {
+    id: i32,
+) -> Result<(), String> {
     state.ssh_config_repo
-        .find_all()
+        .delete(id)
         .await
         .map_err(|e| e.to_string())
 }

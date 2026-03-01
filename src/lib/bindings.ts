@@ -20,6 +20,22 @@ async testSshConnection(payload: TestSshConnectionPayload) : Promise<Result<stri
     if(e instanceof Error) throw e;
     else return { status: "error", error: e  as any };
 }
+},
+async saveSshConfig(name: string, host: string, username: string, port: number, id: number | null) : Promise<Result<Model, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("save_ssh_config", { name, host, username, port, id }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async getAllSshConfigs() : Promise<Result<Model[], string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_all_ssh_configs") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
 }
 }
 
@@ -33,6 +49,7 @@ async testSshConnection(payload: TestSshConnectionPayload) : Promise<Result<stri
 
 /** user-defined types **/
 
+export type Model = { id: number; name: string; host: string; username: string; port: number; created_at: string; updated_at: string }
 export type SshError = "AddressError" | "AuthenticationFailed" | { ProtocolError: string }
 export type SshPayload = { local_path: string; remote_path: string; host: string; user: string; password: string }
 export type TestSshConnectionPayload = { host: string; port: number; username: string; password: string }

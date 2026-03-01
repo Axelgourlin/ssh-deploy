@@ -21,7 +21,10 @@ pub fn run() {  // plus besoin de async
     let builder = Builder::<tauri::Wry>::new()
         .commands(collect_commands![
             commands::ssh_commands::copy_ssh::copy_over_ssh,
-            commands::ssh_commands::test_ssh::test_ssh_connection
+            commands::ssh_commands::test_ssh::test_ssh_connection,
+            commands::persistence_commands::save_ssh_config::save_ssh_config,
+            commands::persistence_commands::get_all_ssh_config::get_all_ssh_configs,
+            commands::persistence_commands::delete_ssh_config::delete_ssh_config,
         ]);
 
     #[cfg(debug_assertions)]
